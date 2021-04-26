@@ -20,7 +20,7 @@ To sum up, we have the following architecture:
 
 1. A floating vip maps to three keepalived servers (one master and two backups). Each keepalived server runs on a K8s controller plane replica.
 2. When keepalived master server fails, vip floats to another backup server automatically.
-3. HAProxy load-balances traffics to three K8s API servers.
+3. HAProxy load-balances traffic to three K8s API servers.
 
 The following section is hands-on tutorial that implements the above architecture.
 ## Settings
