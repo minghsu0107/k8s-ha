@@ -1,6 +1,6 @@
 # Kubernetes HA
 ## Overview
-The following diagram shows a high-availibility Kubernetes cluster with embedded etcd: 
+The following diagram shows a typical high-availibility Kubernetes cluster with embedded etcd: 
 
 ![](https://i.imgur.com/FwEzzWV.png)
 
