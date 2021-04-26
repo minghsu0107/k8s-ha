@@ -39,7 +39,7 @@ docker run -d --cap-add=NET_ADMIN --cap-add=NET_BROADCAST --cap-add=NET_RAW --ne
     --volume $(pwd)/config/keepalived/keepalived.conf:/container/service/keepalived/assets/keepalived.conf \
     -e KEEPALIVED_INTERFACE=eth0 \
     -e KEEPALIVED_PASSWORD=pass \
-    -e KEEPALIVED_STATE=master \
+    -e KEEPALIVED_STATE=MASTER \
     -e KEEPALIVED_VIRTUAL_IPS="#PYTHON2BASH:['172.16.100.100', '172.16.100.101']" \
     -e KEEPALIVED_UNICAST_PEERS="#PYTHON2BASH:['172.16.217.171', '172.16.217.172', '172.16.217.173']" \
     osixia/keepalived:2.0.20 --copy-service
@@ -52,7 +52,7 @@ docker run -d --net=host --volume $(pwd)/config/haproxy:/usr/local/etc/haproxy \
 docker run -d --cap-add=NET_ADMIN --cap-add=NET_BROADCAST --cap-add=NET_RAW --net=host \
     -e KEEPALIVED_INTERFACE=eth0 \
     -e KEEPALIVED_PASSWORD=pass \
-    -e KEEPALIVED_STATE=backup \
+    -e KEEPALIVED_STATE=BACKUP \
     -e KEEPALIVED_VIRTUAL_IPS="#PYTHON2BASH:['172.16.100.100', '172.16.100.101']" \
     -e KEEPALIVED_UNICAST_PEERS="#PYTHON2BASH:['172.16.217.171', '172.16.217.172', '172.16.217.173']" \
     osixia/keepalived:2.0.20 --copy-service
@@ -65,7 +65,7 @@ docker run -d --cap-add=NET_ADMIN --cap-add=NET_BROADCAST --cap-add=NET_RAW --ne
     --volume $(pwd)/config/keepalived/keepalived.conf:/container/service/keepalived/assets/keepalived.conf \
     -e KEEPALIVED_INTERFACE=eth0 \
     -e KEEPALIVED_PASSWORD=pass \
-    -e KEEPALIVED_STATE=backup \
+    -e KEEPALIVED_STATE=BACKUP \
     -e KEEPALIVED_VIRTUAL_IPS="#PYTHON2BASH:['172.16.100.100', '172.16.100.101']" \
     -e KEEPALIVED_UNICAST_PEERS="#PYTHON2BASH:['172.16.217.171', '172.16.217.172', '172.16.217.173']" \
     osixia/keepalived:2.0.20 --copy-service
