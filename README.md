@@ -26,7 +26,7 @@ To sum up, we have the following architecture:
 
 The following section is hands-on tutorial that implements the above architecture.
 ## Settings
-- Three master nodes in private network: `172.16.0.0/16`
+- Three controller plane nodes in private network: `172.16.0.0/16`
 - Node private IPs: `172.16.217.171`, `172.16.217.172`, `172.16.217.173`
 - Virtual IP: `172.16.100.100`, `172.16.100.101`
 ## Usage
