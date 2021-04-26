@@ -10,7 +10,9 @@ Each of K8s controller plane replicas will run the following components in the f
 - controllers, scheduler, and cluster auto-scaler: will use lease mechanism - only one instance of each of them will be active in the cluster;
 - add-on manager: each manager will work independently trying to keep add-ons in sync
 
-However, HA architecture also brings about another problem - which K8s API server should the client connect to? Simply adding mulitple DNS A records does not solve the problem since DNS server could not check server healthiness in real time.
+However, HA architecture also brings about another problem - which K8s API server should the client connect to? Simply adding mulitple DNS A records does not solve the problem since DNS server could not check server healthiness in real time. A reverse proxy with upstream health check is still not good enough because it would become a single-point-of-failure.
+
+**The concept of virtual ip comes to the rescue**.
 
 To achieve high availibility, we will use Keepalived, a LVS (Linux Virtual Server) solution based on VRRP protocol. A LVS service contains a master and multiple backup servers while exposing a virtual ip to outside as a whole. The virtual ip will be pointed to the master server. The master server will send heartbeats to backup servers. Once backup servers are not receiving heartbeats, one backup server will take over the virtual ip, ie. the virtual ip will "float" to that backup server.
 
