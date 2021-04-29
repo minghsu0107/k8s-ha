@@ -1,4 +1,5 @@
 # Kubernetes HA
+**This is the repository of my [blog post](https://minghsu0107.github.io/posts/k8s-ha/)**.
 ## Overview
 The following diagram shows a typical high-availibility Kubernetes cluster with embedded etcd: 
 
