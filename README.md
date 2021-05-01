@@ -34,10 +34,12 @@ The following section is hands-on tutorial that implements the above architectur
 ```bash
 # on first node
 docker run -d --net=host --volume $(pwd)/config/haproxy:/usr/local/etc/haproxy \
+    --restart=always \
     -e HAPROXY_PORT=7443 \
     haproxy:2.3-alpine
 docker run -d --cap-add=NET_ADMIN --cap-add=NET_BROADCAST --cap-add=NET_RAW --net=host \
     --volume $(pwd)/config/keepalived/keepalived.conf:/container/service/keepalived/assets/keepalived.conf \
+    --restart=always \
     -e KEEPALIVED_INTERFACE=eth0 \
     -e KEEPALIVED_PASSWORD=pass \
     -e KEEPALIVED_STATE=MASTER \
@@ -47,10 +49,12 @@ docker run -d --cap-add=NET_ADMIN --cap-add=NET_BROADCAST --cap-add=NET_RAW --ne
 
 # on second node
 docker run -d --net=host --volume $(pwd)/config/haproxy:/usr/local/etc/haproxy \
+    --restart=always \
     -e HAPROXY_PORT=7443 \
     haproxy:2.3-alpine
     --volume $(pwd)/config/keepalived/keepalived.conf:/container/service/keepalived/assets/keepalived.conf \
 docker run -d --cap-add=NET_ADMIN --cap-add=NET_BROADCAST --cap-add=NET_RAW --net=host \
+    --restart=always \
     -e KEEPALIVED_INTERFACE=eth0 \
     -e KEEPALIVED_PASSWORD=pass \
     -e KEEPALIVED_STATE=BACKUP \
@@ -60,10 +64,12 @@ docker run -d --cap-add=NET_ADMIN --cap-add=NET_BROADCAST --cap-add=NET_RAW --ne
 
 # on third node
 docker run -d --net=host --volume $(pwd)/config/haproxy:/usr/local/etc/haproxy \
+    --restart=always \
     -e HAPROXY_PORT=7443 \
     haproxy:2.3-alpine
 docker run -d --cap-add=NET_ADMIN --cap-add=NET_BROADCAST --cap-add=NET_RAW --net=host \
     --volume $(pwd)/config/keepalived/keepalived.conf:/container/service/keepalived/assets/keepalived.conf \
+    --restart=always \
     -e KEEPALIVED_INTERFACE=eth0 \
     -e KEEPALIVED_PASSWORD=pass \
     -e KEEPALIVED_STATE=BACKUP \
